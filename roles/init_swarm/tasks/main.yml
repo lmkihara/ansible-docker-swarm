@@ -1,0 +1,4 @@
+---
+# tasks file for roles/init_swarm
+- include:  init.yml
+- include:  join.yml

@@ -1,0 +1,16 @@
+- name: 'Initiate the docker swarm'
+  docker_swarm:
+    state: present
+    advertise_addr: "{{ ansible_facts['enp0s8']['ipv4']['address'] }}:2377"
+  when: ansible_facts['fqdn'] == "docker-1"
+- name: 'Get token'
+  docker_swarm:
+    state:  inspect
+  register: result
+  when: ansible_facts['fqdn'] == "docker-1"
+- name: 'Add the tokens into a dummy host'
+  add_host:
+    name: "TOKEN_SWARM"
+    manager:  "{{ result.swarm_facts.JoinTokens.Manager }}"
+    worker: "{{ result.swarm_facts.JoinTokens.Worker }}"
+  when: ansible_facts['fqdn'] == "docker-1"

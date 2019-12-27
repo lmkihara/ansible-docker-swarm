@@ -1,0 +1,6 @@
+- name: 'join workers'
+  docker_swarm:
+    advertise_addr: "{{ ansible_facts['enp0s8']['ipv4']['address'] }}"
+    state:  join
+    join_token: "{{ hostvars['TOKEN_SWARM']['worker'] }}"
+    remote_addrs: "{{ hostvars['docker-1']['ansible_facts']['enp0s8']['ipv4']['address'] }}:2377"

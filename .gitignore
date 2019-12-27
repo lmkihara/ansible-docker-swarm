@@ -1,0 +1,5 @@
+*.log
+.vagrant
+.travis.yml
+hosts
+Vagrantfile
