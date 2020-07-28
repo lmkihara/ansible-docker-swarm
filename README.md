@@ -1,3 +1,3 @@
-# Read me
+# Docker swarm with Ansible
 
-## Ansible install and configure a simple docker swarm
+A simple example how to install docker and configure a swarm cluster using Ansible.
